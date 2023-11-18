@@ -84,6 +84,7 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
                       }
                       return null;
                     },
+                    textAlign: TextAlign.center,
                     onTap: () => model.alignmentChange(),
                     onTapOutside: (_) {
                       model.alignmentRestore();
@@ -138,7 +139,14 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
                   SizedBox(
                     height: 30,
                     child: model.counter == 0
-                        ? null
+                        ? TextButton(
+                            onPressed: () {
+                              //resend code
+                            },
+                            child: const Text('Resend OTP?',
+                                style: TextStyle(
+                                    color: Colors.redAccent,
+                                    decoration: TextDecoration.underline)))
                         : Text(
                             'Resend Code in ${context.watch<LoginCubit>().counter} s',
                             style: const TextStyle(color: Colors.redAccent),

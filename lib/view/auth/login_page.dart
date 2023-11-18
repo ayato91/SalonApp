@@ -87,7 +87,6 @@ class _LoginPageState extends State<LoginPage> {
                       return null;
                     },
                     keyboardType: TextInputType.number,
-                    showCursor: true,
                     onTap: () => model.alignmentChange(),
                     onTapOutside: (_) {
                       model.alignmentRestore();
