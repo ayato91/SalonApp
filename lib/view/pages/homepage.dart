@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:salon_app/view/pages/category.dart';
+import 'package:salon_app/view/pages/favourite.dart';
+import 'package:salon_app/view/pages/notification.dart';
 import 'package:salon_app/view/widget/carousel.dart';
 import 'package:salon_app/view/widget/services_center.dart';
 import 'package:salon_app/view/widget/custom_text.dart';
@@ -44,14 +46,20 @@ class HomePage extends StatelessWidget {
                 IconButton(
                   icon: const Icon(CupertinoIcons.bell),
                   onPressed: () {
-                    //todo
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const NotificationScreen()));
                   },
                 ),
                 const SizedBox(width: 5),
                 IconButton(
                     icon: const Icon(CupertinoIcons.bookmark),
                     onPressed: () {
-                      //todo
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const FavouriteScreen()));
                     }),
                 const SizedBox(width: 10)
               ],
@@ -174,15 +182,17 @@ class HomePage extends StatelessWidget {
                             serviceList[index],
                             style: TextStyle(
                                 fontWeight: FontWeight.normal,
-                                color: model.serviceIndex == index
+                                color: model.serviceCategoryIndex == index
                                     ? Colors.white
                                     : const Color(0xFF173568)),
                           ),
                         ),
                         selectedColor: const Color(0xFF173568),
                         backgroundColor: const Color(0xFFDFF1FF),
-                        onSelected: (value) => model.serviceItemChange(index),
-                        selected: index == model.serviceIndex ? true : false,
+                        onSelected: (value) =>
+                            model.serviceCategoryChange(index),
+                        selected:
+                            index == model.serviceCategoryIndex ? true : false,
                       ),
                     );
                   }),
@@ -198,6 +208,7 @@ class HomePage extends StatelessWidget {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ServiceCenter(
+                        model: model,
                         index: index,
                       ),
                     );

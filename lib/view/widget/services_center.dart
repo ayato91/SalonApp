@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:salon_app/view/widget/custom_text.dart';
-import 'package:salon_app/view_model/constraints.dart';
+import 'package:salon_app/view_model/cubit/homescreen_cubit/homescreen_cubit.dart';
 
 class ServiceCenter extends StatelessWidget {
-  const ServiceCenter({super.key, required this.index});
+  const ServiceCenter({super.key, required this.index, required this.model});
   final int index;
+  final HomescreenCubit model;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,26 +24,26 @@ class ServiceCenter extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     image: DecorationImage(
-                        image: NetworkImage(imageList[index % 2]),
+                        image: AssetImage('assets/icons/${index + 1}.png'),
                         fit: BoxFit.fill)),
               )),
           Expanded(
-            flex: 5,
+            flex: 5, //TODO
             child: Container(
                 margin: const EdgeInsets.all(15),
-                child: const Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomText(text: 'Title'),
-                    Text('Location'),
-                    Row(
+                    CustomText(text: 'Title ${index + 1}'),
+                    Text('Location ${index + 1}'),
+                    const Row(
                       children: [
                         Icon(Icons.location_on_rounded),
                         Text('\tDistance')
                       ],
                     ),
-                    Row(
+                    const Row(
                       children: [Icon(Icons.star), Text('\tRating | Reviews')],
                     )
                   ],
@@ -52,15 +53,32 @@ class ServiceCenter extends StatelessWidget {
             child: Align(
               alignment: Alignment.topRight,
               child: IconButton(
+                splashRadius: 20,
+                tooltip: model.isFavourited[index]
+                    ? 'Remove from Favourites'
+                    : 'Add to Favourites',
                 icon: Icon(
-                    index == 0
+                    model.isFavourited[index]
                         ? CupertinoIcons.bookmark_fill
                         : CupertinoIcons.bookmark,
-                    color: index == 0
+                    color: model.isFavourited[index]
                         ? const Color(0xFFFF0000)
-                        : Colors.black), //todo dynamic function Implimentation
+                        : Colors.black),
                 onPressed: () {
-                  //todo Favourite Icon and add to the Favourite list
+                  model.favouriteItem(index);
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    backgroundColor: const Color(0xFD1F4260),
+                    behavior: SnackBarBehavior.floating,
+                    width: MediaQuery.sizeOf(context).width / 2,
+                    duration: const Duration(seconds: 1),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    content: Center(
+                      child: Text(model.isFavourited[index]
+                          ? 'Added to Favourites'
+                          : 'Removed from Favourites'),
+                    ),
+                  ));
                 },
               ),
             ),

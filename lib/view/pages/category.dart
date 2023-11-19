@@ -22,7 +22,7 @@ class CategoryPage extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              //todo
+              //TODO
             },
             child: Column(
               children: [

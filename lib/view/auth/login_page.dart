@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const Homescreen()));
+                              builder: (context) => const HomeScreen()));
                     },
                     child: const Text('SKIP',
                         style: TextStyle(
@@ -124,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                                   verificationFailed: (e) {
                                     model.showLoading(false);
                                     debugPrint(e.toString());
-                                    //todo exception
+                                    //TODO exception
                                   },
                                   codeSent: (verificationId, token) {
                                     model.startTimer();
@@ -139,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                                   },
                                   codeAutoRetrievalTimeout: (e) {
                                     debugPrint(e.toString());
-                                    //todo exception
+                                    //TODO exception
                                     model.showLoading(false);
                                   });
                             }

@@ -33,7 +33,7 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const Homescreen()));
+                              builder: (context) => const HomeScreen()));
                     },
                     child: const Text('SKIP',
                         style: TextStyle(
@@ -119,11 +119,11 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const Homescreen()));
+                                            const HomeScreen()));
                                 model.showLoading(false);
                               } catch (e) {
                                 debugPrint(e.toString());
-                                //todo exception
+                                //TODO exception
                                 model.showLoading(false);
                               }
                             }

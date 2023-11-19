@@ -49,6 +49,7 @@ class _CustomIndicatorState extends State<CustomIndicator> {
   Widget build(BuildContext context) {
     double wi = MediaQuery.sizeOf(context).width;
     bool isFirst = !false, isSecond = !true, isThird = !true;
+    //TODO indicator
     return SizedBox(
       height: MediaQuery.sizeOf(context).height / 140,
       width: wi / 7,
