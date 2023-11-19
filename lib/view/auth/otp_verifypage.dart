@@ -45,7 +45,7 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
                   height: MediaQuery.sizeOf(context).height / 2.5,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/Capture.PNG'),
+                      image: AssetImage('assets/logo.PNG'),
                     ),
                   ),
                 ),
@@ -87,6 +87,10 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
                     textAlign: TextAlign.center,
                     onTap: () => model.alignmentChange(),
                     onTapOutside: (_) {
+                      model.alignmentRestore();
+                      FocusScope.of(context).unfocus();
+                    },
+                    onEditingComplete: () {
                       model.alignmentRestore();
                       FocusScope.of(context).unfocus();
                     },
@@ -141,12 +145,10 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
                     child: model.counter == 0
                         ? TextButton(
                             onPressed: () {
-                              //resend code
+                              model.startTimer();
                             },
                             child: const Text('Resend OTP?',
-                                style: TextStyle(
-                                    color: Colors.redAccent,
-                                    decoration: TextDecoration.underline)))
+                                style: TextStyle(color: Colors.redAccent)))
                         : Text(
                             'Resend Code in ${context.watch<LoginCubit>().counter} s',
                             style: const TextStyle(color: Colors.redAccent),

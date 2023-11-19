@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: MediaQuery.sizeOf(context).height / 2.5,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/Capture.PNG'),
+                      image: AssetImage('assets/logo.PNG'),
                     ),
                   ),
                 ),
@@ -91,6 +91,10 @@ class _LoginPageState extends State<LoginPage> {
                     onTapOutside: (_) {
                       model.alignmentRestore();
                       FocusScope.of(context).unfocus();
+                    },
+                    onEditingComplete: () {
+                      FocusScope.of(context).unfocus();
+                      model.alignmentRestore();
                     },
                     decoration: InputDecoration(
                         border: UnderlineInputBorder(

@@ -7,12 +7,8 @@ import 'package:salon_app/view_model/cubit/homescreen_cubit/homescreen_cubit.dar
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-      options: const FirebaseOptions(
-          apiKey: "AIzaSyBl7cDyPh1jTKZNU0h-NRERpaBM2svJRjI",
-          appId: "1:90454156583:android:64c939d622d76ccb4ff502",
-          messagingSenderId: "90454156583",
-          projectId: "hairsalon-203ff"));
+  await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 
