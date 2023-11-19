@@ -7,7 +7,6 @@ import 'package:salon_app/view/widget/custom_text.dart';
 import 'package:salon_app/view_model/constraints.dart';
 import 'package:salon_app/view_model/cubit/homescreen_cubit/homescreen_cubit.dart';
 
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key, required this.model});
   final HomescreenCubit model;
@@ -23,9 +22,10 @@ class HomePage extends StatelessWidget {
               backgroundColor: Colors.transparent,
               elevation: 0,
               leadingWidth: 70,
-              leading: const Padding(
-                padding: EdgeInsets.only(top: 5, bottom: 5, left: 20),
+              leading: Padding(
+                padding: const EdgeInsets.only(top: 5, bottom: 5, left: 20),
                 child: CircleAvatar(
+                  backgroundImage: NetworkImage(profilePic),
                   radius: 20,
                 ),
               ),

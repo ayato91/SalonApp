@@ -20,6 +20,7 @@ class Homescreen extends StatelessWidget {
           child: Scaffold(
             appBar: model.navIndex != 0
                 ? AppBar(
+                    automaticallyImplyLeading: false,
                     backgroundColor: Colors.transparent,
                     elevation: 0,
                     title: Text(

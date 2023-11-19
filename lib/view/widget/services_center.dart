@@ -57,7 +57,7 @@ class ServiceCenter extends StatelessWidget {
                         ? CupertinoIcons.bookmark_fill
                         : CupertinoIcons.bookmark,
                     color: index == 0
-                        ? const Color.fromARGB(255, 255, 0, 0)
+                        ? const Color(0xFFFF0000)
                         : Colors.black), //todo dynamic function Implimentation
                 onPressed: () {
                   //todo Favourite Icon and add to the Favourite list

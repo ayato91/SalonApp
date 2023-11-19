@@ -5,12 +5,12 @@ List imageList = [
   'https://media.istockphoto.com/id/640274128/photo/barber-using-scissors-and-comb.jpg?s=612x612&w=0&k=20&c=mjdP6NhDA40WBorr8kyyI69waMs1EyzLkSmT6lQRvGU=',
 ];
 List<String> pageTitles = [
-    '',
-    'Category',
-    'Calender',
-    'Messaging',
-    'My Profile'
-  ];
+  '',
+  'Category',
+  'Calender',
+  'Messaging',
+  'My Profile'
+];
 List<String> ctgList = [
   'Hair Cut',
   'Makeup',
@@ -34,9 +34,10 @@ List<String> serviceList = [
   'Waxing',
   'Facial'
 ];
-String name = 'Sushma Shukla';
+String name = 'Guest';
 String greet = greetings();
-
+String profilePic =
+    'https://firebasestorage.googleapis.com/v0/b/dashatar-dev.appspot.com/o/dashatars%2FRGFzaGF0YXJfQm9udXNfU2V0c19Cb251c19E.png?alt=media';
 String greetings() {
   var hour = DateTime.now().hour;
   if (hour > 4 && hour < 12) {
